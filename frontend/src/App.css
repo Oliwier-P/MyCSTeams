@@ -1,4 +1,11 @@
-div {
-  justify-self: center;
-  font-size: 64px;
+body {
+  background-color: #303030;
+}
+
+.main__container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
 }
