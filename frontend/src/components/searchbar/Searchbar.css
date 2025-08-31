@@ -1,0 +1,19 @@
+.searchbar {
+  height: 50px;
+  width: 60%;
+
+  background-color: #484848;
+  color: #fff;
+
+  border: none;
+  border-radius: 10px;
+
+  margin: 20px 0px 0px 0px;
+
+  text-align: center;
+  font-size: clamp(16px, 2vw, 24px);
+}
+
+.searchbar::placeholder {
+  color: #737373;
+}

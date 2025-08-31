@@ -2,5 +2,9 @@
   height: 100vh;
   width: 75%;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   background-color: rgb(94, 94, 94);
 }
