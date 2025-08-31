@@ -11,7 +11,7 @@
   margin: 20px 0px 0px 0px;
 
   text-align: center;
-  font-size: clamp(16px, 2vw, 24px);
+  font-size: clamp(20px, 2vw, 24px);
 }
 
 .searchbar::placeholder {

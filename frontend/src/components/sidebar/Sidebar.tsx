@@ -7,10 +7,13 @@ type SidebarProps = {
 export const Sidebar = ({ isActive }: SidebarProps) => {
   return (
     <div className={`sidebar ${isActive ? "show" : ""}`}>
-      <div className="title">Title</div>
+      <div className={`title ${isActive ? "smaller__title" : ""}`}>
+        My<span style={{ color: "#2200E4" }}>CS</span>Teams
+      </div>
       <div className="teams__container">
-        <div>T1</div>
-        <div>T2</div>
+        <div className={`following__team`}>Astralis</div>
+        <div className={`following__team`}>Vitality</div>
+        <div className={`following__team`}>Faze</div>
       </div>
     </div>
   );
