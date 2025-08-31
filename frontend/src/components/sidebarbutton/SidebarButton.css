@@ -1,0 +1,13 @@
+.sidebar__button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  display: none;
+}
+
+@media (max-width: 750px) {
+  .sidebar__button {
+    display: block;
+  }
+}

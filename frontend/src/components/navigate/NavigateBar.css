@@ -1,0 +1,31 @@
+.navigatebar {
+  height: 50px;
+  width: 60%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sub__container {
+  margin: 30px 0px 0px 0px;
+
+  font-size: clamp(16px, 2vw, 24px);
+}
+
+.active {
+  text-decoration: underline;
+
+  color: #cfcfcf;
+
+  cursor: pointer;
+}
+
+.closed {
+  text-decoration: line-through;
+
+  color: #656565;
+
+  cursor: not-allowed;
+}
