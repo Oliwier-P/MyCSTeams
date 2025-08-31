@@ -1,5 +1,6 @@
 .matches__container {
   height: auto;
+  min-height: 300px;
   width: 100%;
 
   display: flex;
