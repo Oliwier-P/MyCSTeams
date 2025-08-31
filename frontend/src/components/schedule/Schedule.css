@@ -1,6 +1,6 @@
 .schedule__container {
   height: 100vh;
-  width: 75%;
+  flex: 1;
   min-width: 400px;
 
   position: relative;
