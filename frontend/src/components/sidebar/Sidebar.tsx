@@ -1,8 +1,12 @@
 import "./Sidebar.css";
 
-export const Sidebar = () => {
+type SidebarProps = {
+  isActive: boolean;
+};
+
+export const Sidebar = ({ isActive }: SidebarProps) => {
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isActive ? "show" : ""}`}>
       <div className="title">Title</div>
       <div className="teams__container">
         <div>T1</div>
