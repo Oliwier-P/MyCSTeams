@@ -14,8 +14,14 @@
   text-align: center;
   font-size: clamp(20px, 2vw, 24px);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  z-index: 50;
 }
 
 .searchbar::placeholder {
   color: #737373;
+}
+
+.searchbar.focused {
+  z-index: 250;
 }

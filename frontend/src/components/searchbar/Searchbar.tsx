@@ -1,5 +1,8 @@
 import "./Searchbar.css";
+import { useOverlay } from "../../contexts/overlayContext";
 
 export const Searchbar = () => {
-  return <input className="searchbar" placeholder="Find your team..."></input>;
+  const { focused, toggleFocused } = useOverlay();
+
+  return <input className={`searchbar ${focused ? "focused" : ""}`} placeholder="Find your team..." onFocus={toggleFocused} onBlur={toggleFocused} />;
 };

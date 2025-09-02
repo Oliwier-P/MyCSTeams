@@ -1,13 +1,26 @@
 import "./Sidebar.css";
+import { useEffect, useState } from "react";
+import { useOverlay } from "../../contexts/overlayContext";
 
 type SidebarProps = {
   isActive: boolean;
 };
 
 export const Sidebar = ({ isActive }: SidebarProps) => {
+  const [overlayActive, setOverlayActive] = useState<boolean>(isActive);
+  const { focused } = useOverlay();
+
+  useEffect(() => {
+    focused ? setOverlayActive(false) : () => {};
+  }, [focused]);
+
+  useEffect(() => {
+    setOverlayActive(isActive);
+  }, [isActive]);
+
   return (
-    <div className={`sidebar ${isActive ? "show" : ""}`}>
-      <div className={`title ${isActive ? "smaller__title" : ""}`}>
+    <div className={`sidebar ${overlayActive ? "show" : ""}`}>
+      <div className={`title ${overlayActive ? "smaller__title" : ""}`}>
         My<span style={{ color: "#2200E4" }}>CS</span>Teams
       </div>
       <div className="teams__container">

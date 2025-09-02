@@ -10,7 +10,7 @@
   cursor: pointer;
 
   display: none;
-  z-index: 100;
+  z-index: 150;
 }
 
 @media (max-width: 750px) {
