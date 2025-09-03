@@ -1,5 +1,5 @@
 .schedule__container {
-  height: 100vh;
+  height: 100dvh;
   flex: 1;
   min-width: 400px;
 
@@ -9,8 +9,9 @@
   align-items: center;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 850px) {
   .schedule__container {
+    margin-left: 100px;
     width: 100%;
   }
 }

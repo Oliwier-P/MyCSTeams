@@ -1,26 +1,31 @@
 import "./Sidebar.css";
 import { useEffect, useState } from "react";
 import { useOverlay } from "../../contexts/overlayContext";
+import { useWindowWidth } from "../../hooks/useWindowWidth";
 
-type SidebarProps = {
-  isActive: boolean;
-};
-
-export const Sidebar = ({ isActive }: SidebarProps) => {
-  const [overlayActive, setOverlayActive] = useState<boolean>(isActive);
+export const Sidebar = () => {
+  const [showSidebar, setShowSidebar] = useState<boolean>(false);
+  const width = useWindowWidth();
   const { focused } = useOverlay();
 
-  useEffect(() => {
-    focused ? setOverlayActive(false) : () => {};
-  }, [focused]);
+  const handleToggleSidebar = () => {
+    setShowSidebar((prev) => !prev);
+  };
 
   useEffect(() => {
-    setOverlayActive(isActive);
-  }, [isActive]);
+    if (focused || width < 850) {
+      setShowSidebar(false);
+    }
+  }, [focused, width]);
 
   return (
-    <div className={`sidebar ${overlayActive ? "show" : ""}`}>
-      <div className={`title ${overlayActive ? "smaller__title" : ""}`}>
+    <div className={`sidebar ${showSidebar ? "show" : ""}`}>
+      <div className="sidebar__button" onClick={handleToggleSidebar}>
+        <div className="sidebar__button__line"></div>
+        <div className="sidebar__button__line"></div>
+        <div className="sidebar__button__line"></div>
+      </div>
+      <div className={`title ${showSidebar ? "" : "hide"}`}>
         My<span style={{ color: "#2200E4" }}>CS</span>Teams
       </div>
       <div className="teams__container">
