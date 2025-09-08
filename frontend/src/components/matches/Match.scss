@@ -1,0 +1,183 @@
+.match__info {
+  height: 100px;
+  min-height: 100px;
+  width: 70%;
+
+  background-color: #1f1f1f;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  border-radius: 20px;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  margin: 0px 0px 15px 0px;
+
+  transition: width 0.3s ease-in-out;
+}
+
+@media (max-width: 850px) {
+  .match__info {
+    width: 90%;
+  }
+}
+
+.team__container {
+  height: 100%;
+  width: 25%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .team__logo {
+    &.live {
+      height: 30px;
+      width: 30px;
+    }
+
+    &.not__live {
+      height: 50px;
+      width: 50px;
+
+      margin-bottom: 10px;
+    }
+  }
+
+  .team__name {
+    &.live {
+      width: 90%;
+
+      color: #dddddd;
+
+      text-align: center;
+
+      font-size: clamp(12px, 2vw, 16px);
+      font-weight: 600;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &.not__live {
+      width: 90%;
+
+      color: #dddddd;
+
+      text-align: center;
+
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 600;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .team__score {
+    font-size: clamp(32px, 2vw, 36px);
+    font-weight: 800;
+
+    &.win {
+      color: #0bda00;
+    }
+
+    &.lose {
+      color: #ff0000;
+    }
+
+    &.draw {
+      color: #9d9d9d;
+    }
+  }
+}
+
+.match__status {
+  height: 100%;
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .tournament {
+    &__name {
+      height: 25%;
+      width: 100%;
+
+      color: #9d9d9d;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+      text-decoration: underline;
+
+      font-size: clamp(12px, 2vw, 16px);
+      font-weight: 800;
+    }
+
+    &__vs {
+      height: 50%;
+      width: 100%;
+
+      color: #fff;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: clamp(28px, 2vw, 32px);
+      font-weight: 800;
+    }
+
+    &__time {
+      height: 25%;
+      width: 100%;
+
+      color: #fff;
+
+      text-align: center;
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    &__map__score {
+      height: 75%;
+      width: 100%;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 32px;
+      font-weight: 800;
+
+      .dots {
+        color: #fff;
+
+        margin: 5px;
+      }
+
+      .score {
+        &.win {
+          color: #0bda00;
+        }
+        &.draw {
+          color: #9d9d9d;
+        }
+        &.lose {
+          color: #ff0000;
+        }
+      }
+    }
+  }
+}

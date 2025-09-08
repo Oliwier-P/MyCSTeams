@@ -29,9 +29,9 @@ export const Sidebar = () => {
         My<span style={{ color: "#2200E4" }}>CS</span>Teams
       </div>
       <div className="teams__container">
-        <div className={`following__team`}>Astralis</div>
-        <div className={`following__team`}>Vitality</div>
-        <div className={`following__team`}>Faze</div>
+        <div className={`following__team`}>A</div>
+        <div className={`following__team`}>V</div>
+        <div className={`following__team`}>F</div>
       </div>
     </div>
   );

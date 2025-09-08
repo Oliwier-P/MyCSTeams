@@ -47,6 +47,10 @@
   border-radius: 10%;
 }
 
+.sidebar__button:hover {
+  transform: scale(0.9);
+}
+
 .sidebar__button__line {
   height: 4px;
   width: 50%;
