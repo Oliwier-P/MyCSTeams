@@ -1,0 +1,15 @@
+.search__results {
+  height: 100px; // TODO: change to auto
+  width: 50%;
+
+  background-color: #484848;
+
+  position: absolute;
+  top: 100px;
+
+  z-index: 250;
+
+  &.hide {
+    display: none;
+  }
+}

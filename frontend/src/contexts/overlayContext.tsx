@@ -3,6 +3,7 @@ import React, { createContext, useState, useContext } from "react";
 type OverlayContextProps = {
   focused: boolean;
   toggleFocused: () => void;
+  setFocused: (value: boolean) => void;
 };
 
 type OverlayProviderProps = {
@@ -12,11 +13,12 @@ type OverlayProviderProps = {
 const OverlayContext = createContext<OverlayContextProps | null>(null);
 
 export const OverlayProvider = ({ children }: OverlayProviderProps) => {
-  const [focused, setFocused] = useState(false);
+  const [focused, setFocuseded] = useState(false);
 
-  const toggleFocused = () => setFocused((prev) => !prev);
+  const toggleFocused = () => setFocuseded((prev) => !prev);
+  const setFocused = (value: boolean) => setFocuseded(value);
 
-  return <OverlayContext.Provider value={{ focused, toggleFocused }}>{children}</OverlayContext.Provider>;
+  return <OverlayContext.Provider value={{ focused, toggleFocused, setFocused }}>{children}</OverlayContext.Provider>;
 };
 
 export const useOverlay = () => {

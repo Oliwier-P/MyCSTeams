@@ -1,7 +1,7 @@
 import "./App.css";
-import { Overlay } from "./components/overlay/Overlay";
-import { Sidebar } from "./components/sidebar/Sidebar";
-import { Schedule } from "./components/schedule/Schedule";
+import { Overlay } from "./components/Overlay/Overlay";
+import { Sidebar } from "./components/Sidebar/Sidebar";
+import { Schedule } from "./components/Schedule/Schedule";
 
 export const App = () => {
   return (

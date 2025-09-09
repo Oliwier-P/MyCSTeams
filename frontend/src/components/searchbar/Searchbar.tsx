@@ -1,8 +1,19 @@
 import "./Searchbar.css";
+import { forwardRef } from "react";
 import { useOverlay } from "../../contexts/overlayContext";
 
-export const Searchbar = () => {
-  const { focused, toggleFocused } = useOverlay();
+export const Searchbar = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>((props, ref) => {
+  const { focused, setFocused } = useOverlay();
 
-  return <input className={`searchbar ${focused ? "focused" : ""}`} placeholder="Find your team..." onFocus={toggleFocused} onBlur={toggleFocused} />;
-};
+  return (
+    <input
+      {...props}
+      ref={ref}
+      id="searchbar"
+      name="searchbar"
+      className={`searchbar ${focused ? "focused" : ""}`}
+      placeholder="Find your team..."
+      onFocus={() => setFocused(true)}
+    />
+  );
+});
