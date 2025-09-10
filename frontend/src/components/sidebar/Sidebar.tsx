@@ -1,7 +1,8 @@
-import "./Sidebar.css";
+import "./Sidebar.scss";
 import { useEffect, useState } from "react";
 import { useOverlay } from "../../contexts/overlayContext";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
+import { Team } from "./Team";
 
 export const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
@@ -29,9 +30,7 @@ export const Sidebar = () => {
         My<span style={{ color: "#2200E4" }}>CS</span>Teams
       </div>
       <div className="teams__container">
-        <div className={`following__team`}>A</div>
-        <div className={`following__team`}>V</div>
-        <div className={`following__team`}>F</div>
+        <Team onlyLogo={showSidebar} logo={"./vite.svg"} name={"Astralis"} />
       </div>
     </div>
   );

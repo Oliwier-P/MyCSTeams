@@ -1,0 +1,62 @@
+.following__team {
+  height: 50px;
+  min-height: 50px;
+  width: 300px;
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+
+  color: #fff;
+
+  overflow: hidden;
+
+  transition: width 0.3s ease-in-out;
+
+  margin-top: 10px;
+
+  padding-left: 30px;
+
+  border-radius: 10px;
+
+  font-size: 24px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+
+  &__name {
+    height: 100%;
+    width: 200px;
+
+    display: flex;
+    align-items: center;
+
+    opacity: 1;
+
+    transition: all 0.3s ease;
+  }
+
+  &__unfollow {
+    height: 100%;
+    width: 50px;
+
+    background-color: white;
+
+    opacity: 0;
+    transition: opacity 0.3s ease 0.3s;
+
+    .following__team:hover & {
+      opacity: 1;
+    }
+  }
+
+  &.only-logo {
+    width: 60px;
+
+    .following__team {
+      &__name,
+      &__unfollow {
+        opacity: 0;
+      }
+    }
+  }
+}
