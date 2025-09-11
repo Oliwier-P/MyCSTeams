@@ -1,4 +1,4 @@
-import "./Overlay.css";
+import "./Overlay.scss";
 import { useOverlay } from "../../contexts/overlayContext";
 
 export const Overlay = () => {

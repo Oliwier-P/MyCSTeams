@@ -1,0 +1,33 @@
+.navbar {
+  height: 50px;
+  width: 60%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+
+  .navbar__item {
+    margin: 30px 0px 0px 0px;
+
+    font-size: clamp(20px, 2vw, 24px);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
+
+    &.active {
+      text-decoration: underline;
+
+      color: #cfcfcf;
+
+      cursor: pointer;
+    }
+
+    &.closed {
+      text-decoration: line-through;
+
+      color: #656565;
+
+      cursor: not-allowed;
+    }
+  }
+}

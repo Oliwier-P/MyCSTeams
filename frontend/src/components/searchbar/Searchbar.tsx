@@ -1,4 +1,4 @@
-import "./Searchbar.css";
+import "./Searchbar.scss";
 import { forwardRef } from "react";
 import { useOverlay } from "../../contexts/overlayContext";
 

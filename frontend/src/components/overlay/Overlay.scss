@@ -12,9 +12,9 @@
   pointer-events: none;
 
   z-index: 200;
-}
 
-.overlay.active {
-  opacity: 1;
-  pointer-events: auto;
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }

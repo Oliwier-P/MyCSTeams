@@ -16,12 +16,12 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 
   z-index: 50;
-}
 
-.searchbar::placeholder {
-  color: #737373;
-}
+  &::placeholder {
+    color: #737373;
+  }
 
-.searchbar.focused {
-  z-index: 250;
+  &.focused {
+    z-index: 250;
+  }
 }

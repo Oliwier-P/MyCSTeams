@@ -1,10 +1,10 @@
-import "./Schedule.css";
+import "./Schedule.scss";
 import { useRef } from "react";
 import { useOverlay } from "../../contexts/overlayContext";
 import { useClickOutside } from "../../hooks/useClickOutside";
 import { Searchbar } from "../Searchbar/Searchbar";
 import { SearchResults } from "../SearchResults/SearchResults";
-import { NavigateBar } from "../Navigate/NavigateBar";
+import { Navbar } from "../Navbar/Navbar";
 import { Matches } from "../Matches/Matches";
 
 export const Schedule = () => {
@@ -18,7 +18,7 @@ export const Schedule = () => {
     <div className="schedule__container">
       <Searchbar ref={inputRef} />
       <SearchResults ref={resultsRef} />
-      <NavigateBar />
+      <Navbar />
       <Matches />
     </div>
   );
