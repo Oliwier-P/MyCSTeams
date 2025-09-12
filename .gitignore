@@ -1,0 +1,21 @@
+# ---- Node / Frontend ----
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+*.log
+
+# ---- Python / Backend ----
+backend/venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ---- Systemowe / IDE ----
+.DS_Store
+.vscode/
+.idea/
+
+# ---- Env files ----
+.env
+.env.local
