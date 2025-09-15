@@ -2,13 +2,14 @@ import "./Team.scss";
 
 type TeamProps = {
   onlyLogo: boolean;
+  id: number;
   logo: string;
   name: string;
 };
 
-export const Team = ({ onlyLogo, logo, name }: TeamProps) => {
+export const Team = ({ onlyLogo, id, logo, name }: TeamProps) => {
   const handleUnfollow = () => {
-    console.log("Unfollow");
+    // TODO: Remove team
   };
 
   return (

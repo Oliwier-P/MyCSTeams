@@ -2,6 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from cs2api import CS2
 
+# source venv/bin/activate (Mac/Linux)
+# venv\Scripts\activate (Windows)
+# uvicorn main:app --reload
+
+
 app = FastAPI()
 
 app.add_middleware(

@@ -14,13 +14,14 @@ export const useSearchTeams = (searchText: string) => {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    fetch(`http://127.0.0.1:8000/api/search-teams/${searchText}`, { signal })
+    fetch(`http://127.0.0.1:8000/api/team/${searchText}/search`, { signal })
       .then((res) => res.json())
       .then((data) => {
         const results: TeamsResultType[] = data.teams.results.map((team: any) => ({
           rank: team.rank,
           logo: team.image_url,
           name: team.name,
+          slug: team.slug,
         }));
         setTeamsResult(results);
       })

@@ -5,9 +5,12 @@ import { useWindowWidth } from "../../hooks/useWindowWidth";
 import { Team } from "./Team";
 
 export const Sidebar = () => {
+  const titleColor = "#2200E4";
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
   const width = useWindowWidth();
   const { focused } = useOverlay();
+  const [followingTeams, setFollowingTeams] = useState<[]>([]);
+  // TODO: Fetch teams
 
   const handleToggleSidebar = () => {
     setShowSidebar((prev) => !prev);
@@ -27,10 +30,12 @@ export const Sidebar = () => {
         <div className="sidebar__button__line"></div>
       </div>
       <div className={`title ${showSidebar ? "" : "hide"}`}>
-        My<span style={{ color: "#2200E4" }}>CS</span>Teams
+        My<span style={{ color: titleColor }}>CS</span>Teams
       </div>
       <div className="teams__container">
-        <Team onlyLogo={showSidebar} logo={"./vite.svg"} name={"Astralis"} />
+        {followingTeams.map((team: any, index) => (
+          <Team key={index} onlyLogo={showSidebar} id={team.team_data.id} logo={team.team_data.image_url} name={team.team_data.name} />
+        ))}
       </div>
     </div>
   );
