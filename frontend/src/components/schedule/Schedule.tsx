@@ -1,5 +1,5 @@
 import "./Schedule.scss";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useOverlay } from "../../contexts/overlayContext";
 import { useClickOutside } from "../../hooks/useClickOutside";
 import { Searchbar } from "../Searchbar/Searchbar";
@@ -9,6 +9,7 @@ import { Matches } from "../Matches/Matches";
 
 export const Schedule = () => {
   const { setFocused } = useOverlay();
+  const [searchText, setSearchText] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
 
@@ -16,8 +17,8 @@ export const Schedule = () => {
 
   return (
     <div className="schedule__container">
-      <Searchbar ref={inputRef} />
-      <SearchResults ref={resultsRef} />
+      <Searchbar ref={inputRef} onChange={(e) => setSearchText(e.target.value)} />
+      <SearchResults ref={resultsRef} searchText={searchText} />
       <Navbar />
       <Matches />
     </div>

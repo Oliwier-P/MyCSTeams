@@ -15,10 +15,8 @@
   margin: 0px 0px 15px 0px;
 
   transition: width 0.3s ease-in-out;
-}
 
-@media (max-width: 850px) {
-  .match__info {
+  @media (max-width: 850px) {
     width: 90%;
   }
 }

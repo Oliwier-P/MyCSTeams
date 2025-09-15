@@ -12,12 +12,22 @@ app.add_middleware(
     allow_headers=["*"], 
 )
 
-@app.get("/")
-def read_root():
-    return {"Hello": "Wrold"}
-
-@app.get("/api/live-matches")
-async def live_matches():
+@app.get("/api/team/{name}/search")
+async def search_teams(name: str):
     async with CS2() as cs2:
-        data = await cs2.get_live_matches()
-    return {"matches": data}
+        results = await cs2.search_teams(name)
+    return {"teams": results}
+
+@app.get("/api/team/{name}/data")  # name -> team_slug
+async def team_data(name: str):
+    async with CS2() as cs2:
+        data = await cs2.get_team_data(name)
+    return {"team_data": data}
+
+@app.get("/api/team/{team_id}/upcoming-matches")
+async def team_upcoming_matches(team_id: int):
+    async with CS2() as cs2:
+        data = await cs2.get_team_upcoming_matches(team_id)
+    return {"team_matches": data}
+
+# TODO: Validation for search-teams and other endpoints

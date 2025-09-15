@@ -9,6 +9,8 @@
   border: none;
   border-radius: 10px;
 
+  transition: width 0.3s ease-in-out;
+
   margin: 20px 0px 0px 0px;
 
   text-align: center;
@@ -23,5 +25,9 @@
 
   &.focused {
     z-index: 250;
+  }
+
+  @media (max-width: 800px) {
+    width: 75%;
   }
 }

@@ -14,6 +14,7 @@ export const Searchbar = forwardRef<HTMLInputElement, React.InputHTMLAttributes<
       className={`searchbar ${focused ? "focused" : ""}`}
       placeholder="Find your team..."
       onFocus={() => setFocused(true)}
+      autoComplete="off"
     />
   );
 });

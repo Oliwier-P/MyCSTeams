@@ -16,10 +16,8 @@
   &.show {
     width: 350px;
   }
-}
 
-@media (max-width: 850px) {
-  .sidebar {
+  @media (max-width: 850px) {
     position: fixed;
     top: 0;
     left: 0;

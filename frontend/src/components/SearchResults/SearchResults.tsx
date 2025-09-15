@@ -1,13 +1,24 @@
 import "./SearchResults.scss";
 import { forwardRef } from "react";
 import { useOverlay } from "../../contexts/overlayContext";
+import { TeamResult } from "./TeamResult";
+import { useSearchTeams } from "../../hooks/useSearchTeams";
 
-export const SearchResults = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>((props, ref) => {
+type SearchResultsProps = React.HTMLAttributes<HTMLDivElement> & {
+  searchText: string;
+};
+
+export const SearchResults = forwardRef<HTMLDivElement, SearchResultsProps>(({ searchText, ...props }, ref) => {
   const { focused } = useOverlay();
+  const teamsResult = useSearchTeams(searchText);
 
   return (
     <div {...props} ref={ref} className={`search__results ${focused ? "" : "hide"}`}>
-      <button>Click</button>
+      {/* {teamsResult.map((team, index) => (
+        <TeamResult key={index} rank={team.rank} logo={team.logo} name={team.name} />
+        ))} */}
+
+      <TeamResult rank={1} logo={"/vite.svg"} name={"Astralis"} />
     </div>
   );
 });

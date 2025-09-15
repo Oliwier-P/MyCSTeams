@@ -5,7 +5,7 @@ import { Date } from "./Date";
 export const Matches = () => {
   return (
     <div className="matches__container">
-      <Date />
+      {/* <Date />
       <Match
         isLive={true}
         teamLogo1={""}
@@ -18,7 +18,7 @@ export const Matches = () => {
         teamMapScore2={7}
         tournamentName={"IEM Cologne 2025"}
         startAtTime={"16:00"}
-      />
+      /> */}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 .search__results {
-  height: 100px; // TODO: change to auto
+  height: 300px; // TODO: change to auto
   width: 50%;
 
   background-color: #484848;
@@ -7,9 +7,18 @@
   position: absolute;
   top: 100px;
 
+  display: flex;
+  flex-direction: column;
+
+  transition: width 0.3s ease-in-out;
+
   z-index: 250;
 
   &.hide {
     display: none;
+  }
+
+  @media (max-width: 800px) {
+    width: 90%;
   }
 }
