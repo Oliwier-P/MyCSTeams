@@ -22,6 +22,33 @@
     top: 0;
     left: 0;
   }
+
+  .title {
+    height: 50px;
+    width: 250px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: opacity 0.6s ease-in-out; /* Appear */
+    opacity: 1;
+    pointer-events: auto;
+
+    color: #fff;
+
+    margin: 25px 0px 50px 50px;
+
+    font-size: 32px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+
+    &.hide {
+      transition: opacity 0.2s ease-in-out;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
 }
 
 .sidebar__button {
@@ -57,33 +84,6 @@
     margin: 2px;
 
     border-radius: 20%;
-  }
-}
-
-.title {
-  height: 50px;
-  width: 250px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  transition: opacity 0.6s ease-in-out; /* Appear */
-  opacity: 1;
-  pointer-events: auto;
-
-  color: #fff;
-
-  margin: 25px 0px 50px 50px;
-
-  font-size: 32px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: 600;
-
-  &.hide {
-    transition: opacity 0.2s ease-in-out;
-    opacity: 0;
-    pointer-events: none;
   }
 }
 

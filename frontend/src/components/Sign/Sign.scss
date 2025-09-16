@@ -1,0 +1,156 @@
+.sign__form__container {
+  height: 340px;
+  width: 400px;
+  min-width: 300px;
+
+  background-color: #1f1f1f;
+
+  border-radius: 10px;
+
+  margin-top: 10vh;
+
+  @media (max-width: 450px) {
+    width: 90%;
+  }
+
+  &.sign__up {
+    height: 400px;
+  }
+
+  .sign__form {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .checkbox__remember {
+      width: 75%;
+
+      position: relative;
+
+      margin-top: 10px;
+
+      input {
+        width: 15px;
+        height: 15px;
+
+        position: relative;
+
+        opacity: 0;
+        z-index: 1;
+
+        cursor: pointer;
+      }
+
+      input:checked ~ .checkmark:after {
+        display: inline;
+      }
+
+      input:hover ~ .checkmark {
+        background-color: #545454;
+      }
+
+      .checkmark {
+        width: 15px;
+        height: 15px;
+
+        background-color: #2e2e2e;
+
+        position: absolute;
+        top: 5px;
+        left: 0;
+
+        z-index: 0;
+
+        &__text {
+          color: #fff;
+
+          display: inline-block;
+
+          font-weight: 600;
+        }
+      }
+
+      .checkmark:after {
+        content: "";
+
+        width: 4px;
+        height: 8px;
+
+        position: absolute;
+        left: 5px;
+        top: 1px;
+
+        border: solid white;
+        border-width: 0 2px 2px 0;
+
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+
+        display: none;
+        z-index: -1;
+      }
+    }
+  }
+
+  .input {
+    height: 10%;
+    width: 80%;
+
+    color: #fff;
+    background-color: #303030;
+
+    margin: 10px 0;
+    padding: 10px;
+
+    border: none;
+    border-radius: 7px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    &::placeholder {
+      color: #929292;
+    }
+  }
+
+  .button__submit {
+    width: 50%;
+
+    color: #fff;
+    background-color: #ce8807;
+
+    margin-top: 40px;
+    padding: 10px;
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e5a01f;
+    }
+  }
+
+  .switch__form {
+    color: #fff;
+
+    margin-top: 15px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

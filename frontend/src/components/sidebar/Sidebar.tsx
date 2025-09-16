@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { useOverlay } from "../../contexts/overlayContext";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
 import { Team } from "./Team";
+import { titleColor } from "../../utlis";
 
 export const Sidebar = () => {
-  const titleColor = "#2200E4";
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
   const width = useWindowWidth();
   const { focused } = useOverlay();

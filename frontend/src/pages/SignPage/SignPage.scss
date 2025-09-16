@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sign__container {
+  height: 100%;
+  width: 100%;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  .title {
+    font-size: clamp(40px, 8vw, 100px);
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-top: 10vh;
+  }
+}
