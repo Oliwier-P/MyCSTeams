@@ -9,7 +9,7 @@ export const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
   const width = useWindowWidth();
   const { focused } = useOverlay();
-  const [followingTeams, setFollowingTeams] = useState<[]>([]);
+  const [followingTeams, setFollowingTeams] = useState<any[]>([]);
   // TODO: Fetch teams
 
   const handleToggleSidebar = () => {

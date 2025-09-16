@@ -15,7 +15,10 @@ export const SearchResults = forwardRef<HTMLDivElement, SearchResultsProps>(({ s
   return (
     <div {...props} ref={ref} className={`search__results ${focused ? "" : "hide"}`}>
       {teamsResult.map((team, index) => (
-        <TeamResult key={index} rank={team.rank} logo={team.logo} name={team.name} slug={team.slug} />
+        <div key={index}>
+          <TeamResult rank={team.rank} logo={team.logo} name={team.name} slug={team.slug} />
+          <span className="team_underline"></span>
+        </div>
       ))}
     </div>
   );

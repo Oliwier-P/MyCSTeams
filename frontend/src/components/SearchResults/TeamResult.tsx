@@ -19,9 +19,7 @@ export const TeamResult = ({ rank, logo, name, slug }: TeamResultProps) => {
         <img src={logo} alt="logo" />
       </div>
       <div className={`team__result__name`}>{name}</div>
-      <div className={`team__result__follow`}>
-        <button onClick={handleFollowTeam}>+</button>
-      </div>
+      <div className={`team__result__follow`}>+</div>
     </div>
   );
 };

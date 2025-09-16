@@ -3,12 +3,11 @@
   width: 100%;
 
   color: #fff;
-  background-color: #7a7878;
 
   display: flex;
   flex-wrap: nowrap;
 
-  margin-top: 20px;
+  margin-top: 10px;
 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 800;
@@ -26,9 +25,16 @@
     height: 100%;
     width: 20%;
 
+    margin: 0px 2% 0px 2%;
+
     img {
       height: 60px;
       width: 60px;
+
+      @media (max-width: 850px) {
+        height: 40px;
+        width: 40px;
+      }
     }
   }
 
@@ -40,23 +46,25 @@
 
     display: flex;
     align-items: center;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__follow {
     height: 100%;
     width: 20%;
 
-    button {
-      height: 40px;
-      width: 40px;
+    color: #919191;
 
-      color: #fff;
-      background-color: #5f5e5e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      border: none;
+    font-size: 35px;
 
-      cursor: pointer;
-    }
+    cursor: pointer;
   }
 
   &__rank,

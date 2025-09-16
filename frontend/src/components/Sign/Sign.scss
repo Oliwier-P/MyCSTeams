@@ -121,7 +121,7 @@
     width: 50%;
 
     color: #fff;
-    background-color: #ce8807;
+    background-color: #ffa500;
 
     margin-top: 40px;
     padding: 10px;
@@ -129,13 +129,15 @@
     border: none;
     border-radius: 4px;
 
+    transition: background 0.3s ease;
+
     font-size: 20px;
     font-weight: 700;
 
     cursor: pointer;
 
     &:hover {
-      background-color: #e5a01f;
+      background-color: #fcc050;
     }
   }
 

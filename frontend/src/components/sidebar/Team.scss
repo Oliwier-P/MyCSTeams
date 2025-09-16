@@ -43,11 +43,17 @@
   &__name {
     height: 100%;
     width: 200px;
+    min-width: 0px;
 
     display: flex;
     align-items: center;
+    flex-shrink: 1;
 
     opacity: 1;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     transition: all 0.3s ease;
 
