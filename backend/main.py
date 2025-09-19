@@ -6,14 +6,15 @@ from sqlalchemy.orm import sessionmaker, Session, relationship
 from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
 from jose import jwt, JWTError
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, field_validator
 from cs2api import CS2
 from dotenv import load_dotenv
 import os
+import re
 
 # source venv/bin/activate (Mac/Linux)
 # venv\Scripts\activate (Windows)
-# uvicorn main:app --reload
+# uvicorn main:app --reload --host localhost --port 8000
 
 # --- Config ---
 load_dotenv() 
@@ -58,8 +59,21 @@ class User(Base):
     followed_teams = relationship("UserTeam", back_populates="user", cascade="all, delete-orphan")
 
 class UserRegister(BaseModel):
-    username: str
-    password: str
+    username: str = Field(..., min_length=4, max_length=20)
+    password: str = Field(..., min_length=6)
+    
+    @field_validator("username")
+    def username_valid(cls, v):
+        if not re.fullmatch(r"^\w+$", v):
+            raise ValueError("Username can contain only letters, digits, and underscores")
+        return v
+    
+    @field_validator("password")
+    def password_strong(cls, v):
+        if (len(v) < 6 or not re.search(r"[A-Z]", v) or 
+            not re.search(r"\d", v) or not re.search(r"[!@#$%^&*]", v)):
+            raise ValueError("Password must be at least 6 characters long, contain one uppercase letter, one digit, and one special character")
+        return v
     
 class UserLogin(BaseModel):
     username: str
@@ -119,6 +133,8 @@ def login(request: UserLogin, response: Response, db: Session = Depends(get_db))
     # Authenticate user
     user = db.query(User).filter(User.username == request.username).first()
     
+    print(request)
+    
     if not user or not verify_password(request.password, user.password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid username or password")
 
@@ -131,6 +147,9 @@ def login(request: UserLogin, response: Response, db: Session = Depends(get_db))
     refresh_expires = timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS_REMEMBER if remember_me else REFRESH_TOKEN_EXPIRE_DAYS)
     refresh_token = create_access_token(data={"sub": user.username}, expires_delta=refresh_expires)
 
+    print("Acces token expires at:", datetime.now(timezone.utc) + access_token_expires)
+    print("Refresh token expires at:", datetime.now(timezone.utc) + refresh_expires)
+
     # Set token in HttpOnly cookie
     response.set_cookie(
         key="access_token",
@@ -138,7 +157,8 @@ def login(request: UserLogin, response: Response, db: Session = Depends(get_db))
         httponly=True,
         max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60,
         samesite="lax",
-        secure=False,  # TODO: Set to True in production with HTTPS
+        secure=False,  # TODO: Set to True in production with HTTPS and chage domain
+        path="/",
         domain="localhost",
     )
     response.set_cookie(
@@ -147,17 +167,34 @@ def login(request: UserLogin, response: Response, db: Session = Depends(get_db))
         httponly=True,
         max_age=refresh_expires.total_seconds(),
         samesite="lax",
-        secure=False, # TODO: Set to True in production with HTTPS
+        secure=False, # TODO: Set to True in production with HTTPS and chage domain
+        path="/",
         domain="localhost",
     )
 
     return {"msg": "Login successful"}
 
+@app.post("/logout")
+def logout(response: Response):
+    # Delete the access token cookie
+    response.delete_cookie(
+        key="access_token",
+        path="/",
+        domain="localhost"
+    )
+    # Delete the refresh token cookie
+    response.delete_cookie(
+        key="refresh_token",
+        path="/",
+        domain="localhost"
+    )
+    return {"msg": "Logged out successfully"}
+
 @app.get("/me")
 def get_current_user(request: Request, db: Session = Depends(get_db)):
     # Get JWT token from browser cookies
-    
     token = request.cookies.get("access_token")
+    
     if not token:
         raise HTTPException(status_code=401, detail="Not authenticated")
 
@@ -240,5 +277,3 @@ async def team_upcoming_matches(team_id: int):
     async with CS2() as cs2:
         data = await cs2.get_team_upcoming_matches(team_id)
     return {"team_matches": data}
-
-# TODO: Validation for search-teams and other endpoints

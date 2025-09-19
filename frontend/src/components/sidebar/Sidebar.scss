@@ -11,6 +11,8 @@
 
   transition: width 0.3s ease-in-out;
 
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
   z-index: 100;
 
   &.show {
@@ -99,4 +101,75 @@
   margin: 0px 0px 50px 0px;
 
   overflow-y: auto;
+}
+
+.user__container {
+  height: 50px;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: auto;
+  margin-bottom: 20px;
+
+  .user {
+    width: 220px;
+
+    color: #ffffff;
+
+    position: relative;
+
+    opacity: 1;
+
+    font-size: 30px;
+    font-weight: 600;
+
+    margin: 0px 0px 0px 20px;
+
+    transition: opacity 0.2s ease-in-out;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &.hide {
+      animation: disappear 0.2s forwards;
+    }
+
+    @keyframes disappear {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        display: none;
+        opacity: 0;
+      }
+    }
+  }
+
+  .logout {
+    height: 30px;
+    width: 30px;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0px 20px 0px 0px;
+
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.9);
+    }
+
+    &.hide {
+      margin-left: 40px;
+    }
+  }
 }

@@ -1,17 +1,24 @@
 import "./Sign.scss";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useUserAuth } from "../../hooks/useUserAuth";
 
 export const Sign = () => {
-  const [showSignIn, setShowSignIn] = useState<boolean>(true);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
-  const navigate = useNavigate();
+  const [showSignIn, setShowSignIn] = useState<boolean>(true);
+  const { register, login } = useUserAuth();
+
+  const clearForm = () => {
+    setUsername(() => "");
+    setPassword(() => "");
+    setConfirmPassword(() => "");
+  };
 
   const toggleSign = () => {
     setShowSignIn((prev) => !prev);
+    clearForm();
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -25,60 +32,17 @@ export const Sign = () => {
   };
 
   const handleRegister = async () => {
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-    if (username.length < 3 || password.length < 6) {
-      alert("Username must be at least 3 characters and password at least 6 characters long.");
-      return;
-    }
-
-    const response = await fetch("http://127.0.0.1:8000/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
+    register(username, password, confirmPassword).then((success) => {
+      if (success) {
+        clearForm();
+        setShowSignIn(true);
+      }
     });
-
-    const data = await response.json();
-
-    if (data.response) {
-      alert("Registration successful! You can now log in.");
-      setShowSignIn(true);
-      setUsername(() => "");
-      setPassword(() => "");
-      setConfirmPassword(() => "");
-    } else {
-      alert(`Registration failed: ${data.detail || "Unknown error"}`);
-    }
   };
 
   const handleLogin = async () => {
-    if (!username || !password) {
-      alert("Please enter both username and password.");
-      return;
-    }
-
-    const response = await fetch("http://localhost:8000/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password, remember_me: rememberMe }),
-      credentials: "include", // Include cookies in the request
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      alert(`${data.detail || "Unknown error"}`);
-    }
-
-    navigate("/"); // Home page
-    setUsername(() => "");
-    setPassword(() => "");
-    setConfirmPassword(() => "");
+    login(username, password, rememberMe);
   };
-
-  // TODO: Remember me functionality
 
   return (
     <div className={`sign__form__container ${showSignIn ? "" : "sign__up"}`}>
